@@ -45,5 +45,8 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name)
     end
-
+    def admin?
+      return if current_user.try(:admin?)
+      redirect_to new_user_session_path, notice: 'Log in before continue.'
+    end
 end

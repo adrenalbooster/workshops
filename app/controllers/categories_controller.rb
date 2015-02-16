@@ -29,15 +29,11 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if admin?
-      if category.update(category_params)
-        redirect_to category, notice: 'Category was successfully updated.'
-      else
-        render action: 'edit'
-      end
-    else
-      redirect_to new_user_session_path
-    end
+   if category.update(category_params)
+    redirect_to category, notice: 'Category was successfully updated.'
+   else
+     render action: 'edit'
+   end
   end
 
   def destroy
@@ -48,10 +44,6 @@ class CategoriesController < ApplicationController
   private
     def category_params
       params.require(:category).permit(:name)
-    end
-
-    def admin?
-      admin
     end
 
 end

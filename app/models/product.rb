@@ -6,7 +6,9 @@ class Product < ActiveRecord::Base
   validates_presence_of :description, :title, :price
   validates_format_of :price, :with => /\A\d+(?:\.\d{0,2})?\z/
 
-  def self.average_rating
-    product.ratings.average(:rating)
+  def average_rating
+    if self.reviews.size > 0
+      self.reviews.average(:rating)
+    end
   end
 end

@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
-  before_action :admin?, only: [:new, :edit, :update, :destroy, :create]
+  before_action :is_admin, only: [:new, :edit, :update, :destroy, :create]
 
   expose(:categories)
   expose(:category)
@@ -45,8 +45,15 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name)
     end
-    def admin?
-      return if current_user.try(:admin?)
-      redirect_to new_user_session_path, notice: 'Log in before continue.'
+    def is_admin
+      if user_signed_in?
+        flash[:error] =  'You are not an admin.'
+        return if current_user.try(:admin?)
+        redirect_to new_user_session_path
+        flash[:error] =  'You are not an admin.'
+      else
+        redirect_to new_user_session_path
+        flash[:error] =  'Log in before continue.'
+      end
     end
 end

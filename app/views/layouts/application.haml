@@ -15,11 +15,15 @@
           %span.navbar-brand #{AppConfig.workshops_name}
         %p.navbar-text.navbar-right
           - if user_signed_in?
-            %li= link_to(link_to('Your account', edit_user_registration_path))
-            %li= link_to('Logout', destroy_user_session_path, method: :delete)
+            %p
+              %em Hello, #{current_user.firstname}!
+            %ul
+              %li= link_to(link_to('Your account', edit_user_registration_path))
+              %li= link_to('Logout', destroy_user_session_path, method: :delete)
           - else
-            %li= link_to('Login', new_user_session_path)
-            %li= link_to('Sign up', new_user_registration_path)
+            %ul
+              %li= link_to('Login', new_user_session_path)
+              %li= link_to('Sign up', new_user_registration_path)
 
     .container-fluid
       .row

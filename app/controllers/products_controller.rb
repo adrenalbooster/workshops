@@ -16,15 +16,15 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    if current_user != Product.find(params[:id]).user
-      redirect_to category_product_url(category,product)
+    if current_user != product.user
+      redirect_to category_product_url(category, product)
       flash[:error] = 'You are not allowed to edit this product.'
     end
   end
 
   def create
     self.product = Product.new(product_params)
-
+    product.user = current_user
     if product.save
       category.products << product
       redirect_to category_product_url(category, product), notice: 'Product was successfully created.'
@@ -34,14 +34,14 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if current_user == Product.find(params[:id]).user
+    if current_user == product.user
       if self.product.update(product_params)
         redirect_to category_product_url(category, product), notice: 'Product was successfully updated.'
       else
         render action: 'edit'
       end
     else
-      redirect_to category_product_url(category,product)
+      redirect_to category_product_url(category, product)
       flash[:error] = 'You are not allowed to edit this product.'
     end
   end

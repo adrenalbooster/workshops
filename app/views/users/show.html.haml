@@ -1,0 +1,39 @@
+%row
+  %aside.col-md-4
+    %section.user_info
+      %h1
+        = gravatar_for @user
+        = name @user
+      %em.small
+        = @user.email
+      %hr
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Created at
+            %th Last seen
+            %th Sign in ip
+            %th Reviews
+        %tbody
+          %tr
+            %td= @user.created_at.strftime("%Y-%m-%d %H:%M:%S")
+            %td= @user.last_sign_in_at.strftime("%Y-%m-%d %H:%M:%S")
+            %td= @user.current_sign_in_ip
+            %td= @user.reviews.count
+
+
+      %p= link_to 'Change your data', edit_user_registration_path, class: 'btn btn-warning'
+  .col-md-8
+    %h2 Listing reviews
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Date
+          %th Content
+          %th Rating
+      %tbody
+        - Review.where(user_id: @user.id).last(5).reverse.each do |review|
+          %tr
+            %td= review.created_at.strftime('%d-%m-%Y')
+            %td= review.content
+            %td= review.rating

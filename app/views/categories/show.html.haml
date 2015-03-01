@@ -1,17 +1,29 @@
 %p#notice= notice
 
-%p
-  %b Name:
+%h1
   = category.name
-
-%p
+.center  
+  - if user_signed_in? && current_user.admin?
+    = link_to 'Edit', edit_category_path(category), class: 'btn btn-warning'
+ 
+%table.table.table-striped.table-hover
+  %tr
+    %th Name
+    %th Description
+    %th Price
+    %th Average Rating
   - category.products.each do |product|
-    = product.title
+    %tr{:data => { :'link' => category_product_path(product.category_id, product) }}
+      %td
+        = product.title 
+      %td
+        = product.description
+      %td
+        = product.price
+      %td
+        = product.average_rating
 
-%p
+.col-md-6
   %h3 New product
   = render 'products/form'
-
-= link_to 'Edit', edit_category_path(category)
-\|
-= link_to 'Back', categories_path, class: 'btn btn-primary'
+  = link_to 'Back', categories_path, class: 'btn btn-primary'

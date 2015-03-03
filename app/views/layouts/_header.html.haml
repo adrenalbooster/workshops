@@ -1,12 +1,18 @@
-%header.navbar.navbar-fixed-top.navbar-inverse
+%nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
   .container
-    %h1#logo= link_to "#{AppConfig.workshops_name}", root_url
-    %nav
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#navbar-collapse-right", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      #logo= link_to "#{AppConfig.workshops_name}", root_url
+      - if user_signed_in?
+        %em Hello, #{current_user.firstname}!
+    #navbar-collapse-right.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
-          %p
-            %em Hello, #{current_user.firstname}!
-          %li= link_to 'Your profile', current_user
+          %li= link_to 'Your profile', current_user, class: ("active" if controller?('users'))
           %li= link_to 'Logout', destroy_user_session_path, method: :delete
         - else
           %li= link_to 'Login', new_user_session_path

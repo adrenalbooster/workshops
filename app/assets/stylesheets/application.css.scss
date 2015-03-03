@@ -1,10 +1,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* colors */
+
+$papabear: #2f9bbe;
+
 /* universal */
 
 body {
-  padding-top: 110px;
+  padding-top: 60px;
 }
 
 section {
@@ -26,22 +30,29 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  color: $papabear;
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.5em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
+  color: $papabear;
+}
+
+h3 {
+  font-size: 1.125em;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 p {
@@ -55,15 +66,35 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
+  color: $papabear;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   &:hover {
-    color: #fff;
+    color: $papabear;
     text-decoration: none;
   }
+}
+
+.navbar-default {
+  background-color: transparent;
+  border-bottom: none;
+  .navbar-nav {
+    li {
+      a {
+        color: $papabear;
+        &:hover {
+          color: $papabear;
+          border-bottom: 2px solid $papabear;
+        }
+      }
+    }
+  }
+}
+
+.active {
+  border-bottom: 2px solid $papabear;
 }
 
 /* footer */
@@ -138,4 +169,17 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+}
+
+
+
+/* backgrounds */
+
+
+
+/* media queries */
+
+@media screen and (max-width: 500px) {
+    body { padding-top: 40px; }
+    #logo {font-size: 1.5em; margin:0;}
 }

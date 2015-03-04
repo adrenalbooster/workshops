@@ -7,10 +7,9 @@
         %span.icon-bar
         %span.icon-bar
       #logo= link_to "#{AppConfig.workshops_name}", root_url
-      - if user_signed_in?
-        %em Hello, #{current_user.firstname}!
     #navbar-collapse-right.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right
+        %li= link_to 'Categories', categories_path, class: ("active" if controller?('categories'))
         - if user_signed_in?
           %li= link_to 'Your profile', current_user, class: ("active" if controller?('users'))
           %li= link_to 'Logout', destroy_user_session_path, method: :delete

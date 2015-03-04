@@ -60,7 +60,20 @@ p {
   line-height: 1.7em;
 }
 
+blockquote {
+  
+  p {
+    font-size: 0.8em;
+  }
+}
+
 /* header */
+
+bordercolor {
+  height: 5px;
+  display: block;
+  background-color: $papabear;
+}
 
 #logo {
   float: left;
@@ -78,7 +91,7 @@ p {
 }
 
 .navbar-default {
-  background-color: transparent;
+  background-color: #fefefe;
   border-bottom: none;
   .navbar-nav {
     li {

@@ -1,5 +1,5 @@
 %blockquote
-  %span.mark= review.rating
+  - review.rating.times do |star|
+    %span.glyphicon.glyphicon-star-empty
   %p= review.content
   %footer= link_to review.author, review.user
-  //wstawić linka do usera

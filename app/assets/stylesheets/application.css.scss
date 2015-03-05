@@ -3,7 +3,7 @@
 
 /* colors */
 
-$papabear: #2f9bbe;
+$papabear: #428BCA;
 
 /* universal */
 
@@ -61,13 +61,14 @@ p {
 }
 
 blockquote {
+  padding: 10px 40px;
   p {
     position: relative;
     font-size: 0.8em;
     &:before {
       content: "\201C";
       position: absolute;
-      top: 4px; left: -20px;
+      top: 4px; left: -30px;
       font-size: 60px;
       color: #999;
     }
@@ -89,27 +90,28 @@ bordercolor {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: $papabear;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
-  font-weight: bold;
+  a {
+    color: white;
+  }
   &:hover {
-    color: $papabear;
     text-decoration: none;
   }
 }
 
 .navbar-default {
-  background-color: #fefefe;
+  background-color: $papabear;
   border-bottom: none;
+  color: white;
   .navbar-nav {
     li {
       a {
-        color: $papabear;
+        color: white;
         &:hover {
-          color: $papabear;
-          border-bottom: 2px solid $papabear;
+          font-weight: bold;
+          color: white;
         }
       }
     }
@@ -117,7 +119,7 @@ bordercolor {
 }
 
 .active {
-  border-bottom: 2px solid $papabear;
+  font-weight: bold;
 }
 
 /* footer */

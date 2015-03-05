@@ -62,7 +62,15 @@ p {
 
 blockquote {
   p {
+    position: relative;
     font-size: 0.8em;
+    &:before {
+      content: "\201C";
+      position: absolute;
+      top: 4px; left: -20px;
+      font-size: 60px;
+      color: #999;
+    }
   }
   footer {
     margin-top: 1em;
@@ -178,7 +186,7 @@ aside {
 /* forms */
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+  border: 1px solid $papabear;
   margin-bottom: 15px;
 }
 
@@ -191,6 +199,20 @@ input {
 /* backgrounds */
 
 
+/* buttons */
+
+.btn-default {
+  background: none;
+  border: 2px solid $papabear;
+  color: $papabear;
+  &:hover {
+    border: 2px solid $papabear;
+    color: white;
+    background-color: $papabear;
+  }
+}
+
+.btn {margin-top:10px;}
 
 /* media queries */
 

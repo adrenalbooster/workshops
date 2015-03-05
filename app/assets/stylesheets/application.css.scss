@@ -43,8 +43,8 @@ h1 {
 h2 {
   font-size: 1.5em;
   letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
+  margin-bottom: 10px;
+  text-align: left;
   font-weight: normal;
   color: $papabear;
 }
@@ -58,6 +58,10 @@ h3 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+}
+
+a {
+  color: $papabear;
 }
 
 blockquote {
@@ -75,6 +79,12 @@ blockquote {
   }
   footer {
     margin-top: 1em;
+    a {
+      color: $papabear;
+      &:hover {
+        color: $papabear;
+      }
+    }
   }
 }
 
@@ -202,19 +212,14 @@ input {
 
 
 /* buttons */
-/*
-.btn-default {
-  background: none;
-  border: 2px solid $papabear;
-  color: $papabear;
-  &:hover {
-    border: 2px solid $papabear;
-    color: white;
-    background-color: $papabear;
-  }
-}
-*/
+
 .btn {margin-top:10px;}
+
+/* products */
+
+.price:after {
+  content: "$"
+}
 
 /* media queries */
 
@@ -222,3 +227,4 @@ input {
     body { padding-top: 40px; }
     #logo {font-size: 1.5em; margin:0;}
 }
+

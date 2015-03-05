@@ -5,26 +5,30 @@
         = gravatar_for @user
         = name @user
       %em.small
-        = @user.email
+        = mail_to @user.email, @user.email
       %hr
       %table.table.table-striped
         %thead
           %tr
-            %th Created at
-            %th Last seen
-            %th Sign in ip
-            %th Reviews
+            %th User data
+            %th
         %tbody
           %tr
+            %td Created at
             %td= @user.created_at.strftime("%Y-%m-%d %H:%M:%S")
+          %tr
+            %td Last sign in
             %td= @user.last_sign_in_at.strftime("%Y-%m-%d %H:%M:%S")
+          %tr
+            %td Sing in ip
             %td= @user.current_sign_in_ip
+          %tr
+            %td Reviews
             %td= @user.reviews.count
-
 
       %p= link_to 'Change your data', edit_user_registration_path, class: 'btn btn-warning'
   .col-md-8
-    %h2 Listing reviews
+    %h2 Last reviews
     %table.table.table-striped
       %thead
         %tr

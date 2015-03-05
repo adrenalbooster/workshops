@@ -18,7 +18,7 @@
 
 %br
 - if user_signed_in? && current_user.admin?
-  = link_to 'New Category', new_category_path, class: 'btn btn-lg btn-success'
+  = link_to 'New Category', new_category_path, class: 'btn btn-success'
 - else
   %p
     %em You are not an admin, you cannot create, edit and destroy categories.

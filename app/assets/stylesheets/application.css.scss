@@ -130,6 +130,16 @@ blockquote {
       }
     }
   }
+
+  .navbar-toggle {
+    border-color: $mamabear;
+    .icon-bar {
+      background-color: $mamabear;
+    }
+    &:hover {
+      background-color: $babybear;
+    }
+  }
 }
 
 .active {

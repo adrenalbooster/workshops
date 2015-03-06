@@ -9,12 +9,13 @@ class ReviewsController < ApplicationController
     self.review = Review.new(review_params)
     review.user = current_user
     unless Review.exists?( {product_id: product, user_id: current_user})
-    if review.save
-      product.reviews << review
-      redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'
-    else
-      render action: 'new'
-    end
+      if review.save
+        product.reviews << review
+        redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'
+      else
+        flash[:error] = 'You cannot save empty review.'
+        redirect_to category_product_url(product.category, product)
+      end
     else
       flash[:error] = "You gave us your review already."
       redirect_to category_product_url(product.category, product)

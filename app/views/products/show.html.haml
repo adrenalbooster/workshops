@@ -1,6 +1,4 @@
-%p#notice= notice
 %p#error= flash[:error]
-
 %h2
   = product.title
 %p
@@ -12,8 +10,8 @@
   %b Price:
   = product.price
  
-
-= link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-warning'
+- if user_signed_in? && current_user == product.user
+  = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-warning'
 = link_to 'Back', category_products_path, class: 'btn btn-primary'
 
 %h3 Reviews

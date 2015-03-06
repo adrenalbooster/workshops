@@ -64,6 +64,10 @@ a {
   color: $papabear;
 }
 
+.table tbody tr td {
+  vertical-align: middle;
+}
+
 blockquote {
   padding: 10px 40px;
   p {
